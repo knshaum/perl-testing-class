@@ -8,6 +8,6 @@ use Test::More;
 use Local::Hello;
 pass("Hello compiled");
 
-ok hello() eq "Hello, world!";
+is hello(), "Hello, world!";
 
 done_testing;
