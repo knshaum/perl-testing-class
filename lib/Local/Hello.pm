@@ -10,8 +10,8 @@ our @EXPORT = qw(hello);
 
 sub hello {
     my($greeting, $place) = @_;
-    $greeting //= "Hello";
-    $place    //= "world";
+    $greeting = "Hello" unless defined($greeting) && length($greeting);
+    $place    = "world" unless defined($place)    && length($place);
 
     return "$greeting, $place!\n";
 }
