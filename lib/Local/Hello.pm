@@ -8,6 +8,8 @@ our @EXPORT = qw(hello);
 
 sub hello {
     my($greeting, $place) = @_;
+    $greeting ||= "Hello";
+    $place    ||= "World";
 
     return "$greeting, $place!\n";
 }
