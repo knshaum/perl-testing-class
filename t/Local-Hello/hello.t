@@ -15,6 +15,7 @@ my @tests = (
     [["", ""]            =>     "Hello, world!\n"],
     [[]                  =>     "Hello, world!\n"],
     [[undef, undef]      =>     "Hello, world!\n"],
+    [[0, 0]              =>     "0, 0!\n"],
     [["Howdy", "Earth"]  =>     "Howdy, Earth!\n"],
     [["", "Sol 3"]       =>     "Hello, Sol 3!\n"],
     [["Yo", ""]          =>     "Yo, world!\n"],
