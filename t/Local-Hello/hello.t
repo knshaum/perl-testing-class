@@ -13,6 +13,8 @@ pass("Hello compiled");
 my @tests = (
     [["Merhaba", "dünya"]=>     "Merhaba, dünya!\n"],
     [["", ""]            =>     "Hello, world!\n"],
+    [[]                  =>     "Hello, world!\n"],
+    [[undef, undef]      =>     "Hello, world!\n"],
     [["Howdy", "Earth"]  =>     "Howdy, Earth!\n"],
     [["", "Sol 3"]       =>     "Hello, Sol 3!\n"],
     [["Yo", ""]          =>     "Yo, world!\n"],
@@ -21,7 +23,8 @@ my @tests = (
 for my $test (@tests) {
     my($args, $want) = @$test;
 
-    is hello(@$args), $want, sprintf("hello(%s)", join(", ", @$args));
+    my $name = sprintf("hello(%s)", join(", ", map { defined $_ ? $_ : "undef" } @$args));
+    is hello(@$args), $want, $name;
 }
 
 done_testing;
