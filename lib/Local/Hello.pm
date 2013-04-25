@@ -9,7 +9,7 @@ our @EXPORT = qw(hello);
 sub hello {
     my($greeting, $place) = @_;
     $greeting ||= "Hello";
-    $place    ||= "World";
+    $place    ||= "world";
 
     return "$greeting, $place!\n";
 }
