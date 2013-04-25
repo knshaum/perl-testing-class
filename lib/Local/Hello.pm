@@ -1,10 +1,15 @@
 package Local::Hello;
 
+use strict;
+use warnings;
+
 use parent qw(Exporter);
 our @EXPORT = qw(hello);
 
 sub hello {
-    return "Hello, world!\n";
+    my($greeting, $place) = @_;
+
+    return "$greeting, $place!\n";
 }
 
 1;
