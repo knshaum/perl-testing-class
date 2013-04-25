@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Test::More;
+use Test::FailWarnings;
 
 use Local::Hello;
 pass("Hello compiled");
