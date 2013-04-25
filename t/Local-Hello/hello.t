@@ -9,9 +9,17 @@ use Test::FailWarnings;
 use Local::Hello;
 pass("Hello compiled");
 
-is hello(),                     "Hello, world!\n";
-is hello("Howdy", "Earth"),     "Howdy, Earth!\n";
-is hello("", "Sol 3"),          "Hello, Sol 3!\n";
-is hello("Yo", ""),             "Yo, world!\n";
+my @tests = (
+    [["", ""]            =>     "Hello, world!\n"],
+    [["Howdy", "Earth"]  =>     "Howdy, Earth!\n"],
+    [["", "Sol 3"]       =>     "Hello, Sol 3!\n"],
+    [["Yo", ""]          =>     "Yo, world!\n"],
+);
+
+for my $test (@tests) {
+    my($args, $want) = @$test;
+
+    is hello(@$args), $want, sprintf("hello(%s)", join(", ", @$args));
+}
 
 done_testing;
