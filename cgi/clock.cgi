@@ -14,10 +14,16 @@ sub main {
     return $html;
 }
 
-sub page {
+sub date_time {
     my($sec, $min, $hour, $day, $mon, $year) = localtime;
     $year += 1900;
     $mon  += 1;
+
+    return "$mon/$day/$year - $hour:$min:$sec";
+}
+
+sub page {
+    my $date_time = date_time;
 
     return <<"HTML";
 <html>
@@ -38,7 +44,7 @@ sub page {
 
 <body>
     <p>At the sound of your head hitting the desk, the time will be
-        <div id="time">$mon/$day/$year - $hour:$min:$sec</div>
+        <div id="time">$date_time</div>
     </p>
 </body>
 
