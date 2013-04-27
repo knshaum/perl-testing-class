@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use CGI;
 
-print main(@ARGV);
+print main(@ARGV) unless caller;
 
 sub main {
     my $cgi = CGI->new;
