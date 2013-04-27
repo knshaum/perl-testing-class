@@ -6,7 +6,12 @@ use warnings;
 use Test::More;
 use Test::XPath;
 
-my $html = `$^X cgi/clock.cgi`;
+{
+    package MyClock;
+    ::require_ok "./cgi/clock.cgi";
+}
+
+my $html = MyClock::main();
 
 # Strip HTTP headers so we have just HTML
 # Up to the first blank line CGI.pm will sometimes use \015\012
