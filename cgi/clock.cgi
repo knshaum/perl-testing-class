@@ -15,10 +15,23 @@ print <<"HTML";
 <html>
 <head>
     <title>What time is it!</title>
+    <style>
+        body {
+            background-image:url("img/Pinkie Pie clock transparent.png");
+            background-repeat:no-repeat;
+            background-position:top right;
+        }
+        #time {
+            text-align:left;
+            font-size:200%
+        }
+    </style>
 </head>
 
 <body>
-    At the sound of your head hitting your desk, the time will be <b>$mon/$day/$year - $hour:$min:$sec</b>
+    <p>At the sound of your head hitting the desk, the time will be
+        <div id="time">$mon/$day/$year - $hour:$min:$sec</div>
+    </p>
 </body>
 
 </html>
