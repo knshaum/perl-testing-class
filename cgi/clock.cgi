@@ -9,12 +9,17 @@ print main(@ARGV) unless caller;
 sub main {
     my $cgi = CGI->new;
 
+    my $html = $cgi->header;
+    $html   .= page();
+    return $html;
+}
+
+sub page {
     my($sec, $min, $hour, $day, $mon, $year) = localtime;
     $year += 1900;
     $mon  += 1;
 
-    my $html = $cgi->header;
-    $html .= <<"HTML";
+    return <<"HTML";
 <html>
 <head>
     <title>What time is it!</title>
@@ -39,6 +44,4 @@ sub main {
 
 </html>
 HTML
-
-    return $html;
 }
