@@ -4,14 +4,17 @@ use strict;
 use warnings;
 use CGI;
 
-my $cgi = CGI->new;
+main(@ARGV);
 
-my($sec, $min, $hour, $day, $mon, $year) = localtime;
-$year += 1900;
-$mon  += 1;
+sub main {
+    my $cgi = CGI->new;
 
-print $cgi->header;
-print <<"HTML";
+    my($sec, $min, $hour, $day, $mon, $year) = localtime;
+    $year += 1900;
+    $mon  += 1;
+
+    print $cgi->header;
+    print <<"HTML";
 <html>
 <head>
     <title>What time is it!</title>
@@ -36,3 +39,4 @@ print <<"HTML";
 
 </html>
 HTML
+}
