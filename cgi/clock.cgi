@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use CGI;
 
-main(@ARGV);
+print main(@ARGV);
 
 sub main {
     my $cgi = CGI->new;
@@ -13,8 +13,8 @@ sub main {
     $year += 1900;
     $mon  += 1;
 
-    print $cgi->header;
-    print <<"HTML";
+    my $html = $cgi->header;
+    $html .= <<"HTML";
 <html>
 <head>
     <title>What time is it!</title>
@@ -39,4 +39,6 @@ sub main {
 
 </html>
 HTML
+
+    return $html;
 }
