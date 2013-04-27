@@ -6,6 +6,7 @@ use warnings;
 use Test::More;
 use Test::XPath;
 
+my $Date_Time_RE = qr{(\d+)/(\d+)/(\d{4}) - (\d+):(\d+):(\d+)};
 
 note "Load clock.cgi as a library in its own package"; {
     package MyClock;
@@ -16,12 +17,25 @@ note "Load clock.cgi as a library in its own package"; {
 note "Basic test that the clock is on the page"; {
     my $html = MyClock::page();
 
-    my $date_time_re = qr{(\d+)/(\d+)/(\d{4}) - (\d+):(\d+):(\d+)};
     my $txpath = Test::XPath->new( xml => $html );
     $txpath->ok( q{//div[@id="time"]}, sub {
         my $div = shift;
-        like $div->node, $date_time_re;
+        like $div->node, $Date_Time_RE;
     });
+}
+
+
+note "Basic formatted date_time test"; {
+    local $ENV{TZ} = "US/Central";
+    my $date_time = MyClock::date_time(167209382);
+
+    my($mon, $day, $year, $hour, $min, $sec) = $date_time =~ $Date_Time_RE;
+    is $sec,    2,         "second";
+    is $min,    3,         "minute";
+    is $hour,   2,         "hour";
+    is $day,    20,        "day";
+    is $mon,    4,         "month";
+    is $year,   1975,      "year";
 }
 
 done_testing;

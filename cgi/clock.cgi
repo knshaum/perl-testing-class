@@ -15,7 +15,9 @@ sub main {
 }
 
 sub date_time {
-    my($sec, $min, $hour, $day, $mon, $year) = localtime;
+    my $time = shift // time;
+
+    my($sec, $min, $hour, $day, $mon, $year) = localtime($time);
     $year += 1900;
     $mon  += 1;
 
