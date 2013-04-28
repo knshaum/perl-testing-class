@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use CGI;
+use Local::DateTime;
 
 print main(@ARGV) unless caller;
 
@@ -12,16 +13,6 @@ sub main {
     my $html = $cgi->header;
     $html   .= page();
     return $html;
-}
-
-sub date_time {
-    my $time = shift // time;
-
-    my($sec, $min, $hour, $day, $mon, $year) = localtime($time);
-    $year += 1900;
-    $mon  += 1;
-
-    return "$mon/$day/$year - $hour:$min:$sec";
 }
 
 sub page {
