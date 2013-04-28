@@ -7,7 +7,7 @@ use Test::More;
 use Test::XPath;
 use Test::Time time => 167213045;  # freeze time at Sun Apr 20 03:04:05 1975
 
-my $Date_Time_RE = qr{(\d+)/(\d+)/(\d{4}) - (\d+):(\d+):(\d+)};
+my $Date_Time_RE = qr{(\d+)/(\d+)/(\d+) - (\d+):(\d+):(\d+)};
 
 
 note "Load clock.cgi as a library in its own package"; {

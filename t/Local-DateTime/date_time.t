@@ -8,7 +8,7 @@ use Test::Time time => 167213045;  # freeze time
 
 use Local::DateTime;
 
-my $Date_Time_RE = qr{(\d+)/(\d+)/(\d{4}) - (\d+):(\d+):(\d+)};
+my $Date_Time_RE = qr{(\d+)/(\d+)/(\d+) - (\d+):(\d+):(\d+)};
 
 note "Basic formatted date_time test with argument"; {
     local $ENV{TZ} = "US/Central";
