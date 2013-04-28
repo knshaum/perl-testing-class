@@ -16,7 +16,7 @@ sub main {
 }
 
 sub page {
-    my $date_time = date_time;
+    my $date_time = Local::DateTime->date_time;
 
     return <<"HTML";
 <html>

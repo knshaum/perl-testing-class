@@ -12,7 +12,7 @@ my $Date_Time_RE = qr{(\d+)/(\d+)/(\d{4}) - (\d+):(\d+):(\d+)};
 
 note "Basic formatted date_time test with argument"; {
     local $ENV{TZ} = "US/Central";
-    my $date_time = date_time(167209382);
+    my $date_time = Local::DateTime->date_time(167209382);
 
     my($mon, $day, $year, $hour, $min, $sec) = $date_time =~ $Date_Time_RE;
     is $sec,    2,         "second";
@@ -28,7 +28,7 @@ note "Basic formatted date_time test without argument"; {
     my $now = time;
 
     local $ENV{TZ} = "US/Central";
-    my $date_time = date_time();
+    my $date_time = Local::DateTime->date_time();
 
     my($mon, $day, $year, $hour, $min, $sec) = $date_time =~ $Date_Time_RE;
     is $sec,    5,         "second";

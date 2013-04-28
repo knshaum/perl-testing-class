@@ -3,10 +3,8 @@ package Local::DateTime;
 use strict;
 use warnings;
 
-use parent "Exporter";
-our @EXPORT = qw(date_time);
-
 sub date_time {
+    my $class = shift;
     my $time = shift // time;
 
     my($sec, $min, $hour, $day, $mon, $year) = localtime($time);
